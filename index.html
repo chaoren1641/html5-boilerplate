@@ -3,7 +3,7 @@
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!-- 可以加入一个manifest.appcache文件增加离线浏览功能: h5bp.com/d/Offline -->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
@@ -16,21 +16,19 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <!-- 移动设备窗口优化: j.mp/bplateviewport -->
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+  <!-- 你的 favicon.ico 图标和 apple-touch-icon.png -->
 
   <!-- CSS: implied media=all -->
-  <!-- CSS concatenated and minified via ant build script-->
+  <!-- CSS文件放在这里，如果有条件的话可以使用ant工具合并压缩它们-->
   <link rel="stylesheet" href="css/style.css">
   <!-- end CSS-->
 
-  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+  <!-- 其它更多想放置的head里的标签 这里肯定有你想要的： h5bp.com/d/head-Tips -->
 
-  <!-- All JavaScript at the bottom, except for this custom Modernizr build containing Respond.
-       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-       For optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
+  <!-- 除了modernizr.js，其它所有的javascript放在底部加载,因为modernizr.js包含了加载基础模块和HTML5标签使用功能; 这个文件可以根据你要使用的功能上它的官网定制: www.modernizr.com/download/ -->
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
 
@@ -49,20 +47,20 @@
   </div> <!--! end of #container -->
 
 
-  <!-- JavaScript at the bottom for fast page loading -->
+  <!-- JavaScript 放在页面最底部加载 -->
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!-- 可以优先使用 google CDN里的 jQuery, 如果无法访问的话就加载本地的jquery，不想使用google cdn 可以不用这一段代码 -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
 
-  <!-- scripts concatenated and minified via ant build script-->
+  <!-- 这是你的页面交互要使用的js，如果有条件的话，可以使用ant来合并压缩它-->
   <script defer src="js/plugins.js"></script>
   <script defer src="js/script.js"></script>
   <!-- end scripts-->
 
 	
-  <!-- Change UA-XXXXX-X to be your site's ID -->
+  <!-- 加载google统计代码，这里只需要发动UA-XXXXX-X 为你的网站ID，也可以直接把这段代码覆盖 -->
   <script>
     window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
     Modernizr.load({
@@ -70,13 +68,5 @@
     });
   </script>
 
-
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7 ]>
-    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
-  
 </body>
 </html>
