@@ -1,4 +1,5 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
+<!DOCTYPE project>
 <project name="Boilerplate Build" default="build" basedir="../"> <!-- one back since we're in build/ -->
 
 
@@ -6,7 +7,7 @@
     <!-- the .jar file is located in the tools directory -->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
         <classpath>
-			<pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
+            <pathelement location="${basedir}/build/tools/ant-contrib-1.0b3.jar"/>
         </classpath>
     </taskdef>
 
@@ -23,7 +24,14 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
-
+    <!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+    <fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
+        <condition>
+            <not>
+                <contains string="${ant.version}" substring="1.8.2"/>
+            </not>
+        </condition>
+    </fail>
     
     <!--
     *************************************************
@@ -170,43 +178,58 @@
     
     
     <!-- JSLint target, run separately -->
-	<target name="jslint">
-        <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
-			<fileset dir="./${dir.source}/">
-                <include name="**/${dir.js}/*.js"/>
-                <exclude name="**/*.min.js"/>
-            	<exclude name="**/${dir.js.libs}/"/>
-            	<exclude name="**/${dir.publish}/"/>
-		    </fileset> 
-			<arg value="-jar" />
-			<arg path="./${dir.build.tools}/${tool.rhino}" />
-			<arg path="./${dir.build.tools}/${tool.jslint}" />
+    <target name="jslint">
+      <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
+            <fileset dir="./${dir.source}/">
+        <include name="**/${dir.js}/*.js"/>
+        <exclude name="**/*.min.js"/>
+        <exclude name="**/${dir.js.libs}/"/>
+        <exclude name="**/${dir.publish}/"/>
+          </fileset> 
+            <arg value="-jar" />
+            <arg path="./${dir.build.tools}/${tool.rhino}" />
+            <arg path="./${dir.build.tools}/${tool.jslint}" />
             <srcfile/>
             <arg value="${tool.jslint.opts}" />
-        </apply>		
-		<echo>JSLint Successful</echo>
-	</target>     
+        </apply>        
+        <echo>JSLint Successful</echo>
+    </target>     
   
   
     <!-- JSHint target, run separately -->
-	<target name="jshint">
-        <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
-			<fileset dir="./${dir.source}/">
-                <include name="**/${dir.js}/*.js"/>
-                <exclude name="**/*.min.js"/>
-            	<exclude name="**/${dir.js.libs}/"/>
-            	<exclude name="**/${dir.publish}/"/>
-		    </fileset> 
-			<arg value="-jar" />
-			<arg path="./${dir.build.tools}/${tool.rhino}" />
-			<arg path="./${dir.build.tools}/${tool.jshint}" />
+    <target name="jshint">
+      <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
+            <fileset dir="./${dir.source}/">
+        <include name="**/${dir.js}/*.js"/>
+        <exclude name="**/*.min.js"/>
+        <exclude name="**/${dir.js.libs}/"/>
+        <exclude name="**/${dir.publish}/"/>
+          </fileset> 
+            <arg value="-jar" />
+            <arg path="./${dir.build.tools}/${tool.rhino}" />
+            <arg path="./${dir.build.tools}/${tool.jshint}" />
             <srcfile/>
-			<arg value="${tool.jshint.opts}" />
-        </apply>		
-		<echo>JSHint Successful</echo>
-	</target>    
+            <arg value="${tool.jshint.opts}" />
+        </apply>        
+        <echo>JSHint Successful</echo>
+    </target>    
        
-    
+    <!-- CSSLint target, run separately -->
+    <target name="csslint">
+        <apply dir="${dir.source}/${dir.css}" executable="java" parallel="false" failonerror="true">
+            <fileset dir="./${dir.source}/">
+                <include name="**/${dir.css}/*.css"/>
+                <exclude name="**/*.min.css"/>
+                <exclude name="**/${dir.publish}/"/>
+            </fileset> 
+            <arg value="-jar" />
+            <arg path="./${dir.build.tools}/${tool.rhino}" />
+            <arg path="./${dir.build.tools}/${tool.csslint}" />
+            <srcfile/>
+            <arg value="${tool.csslint.opts}" />
+        </apply>
+        <echo>CSSLint Successful</echo>
+    </target>
     
     <!--
     *************************************************
@@ -370,9 +393,9 @@
     * FUNCTION TARGETS                              *
     *************************************************
     -->
+        
     <target name="-clean" description="(PRIVATE) Wipe the previous build (Deletes the dir.publish directory">
-    <!-- This is a private target -->
-    
+    <!-- This is a private target -->        
         <echo message="Cleaning up previous build directory..."/>
         <delete dir="./${dir.intermediate}/"/>
         <delete dir="./${dir.publish}/"/>
@@ -398,21 +421,34 @@
     </target>
     
     <target name="-mkdirs">
-        <echo message="Creating directory structure..."/>
+      <if>
+          <or>
+            <equals arg1="${dir.publish}" arg2="."/>            
+            <equals arg1="${dir.publish}" arg2=".."/>                      
+            <equals arg1="${dir.publish}" arg2="/"/>                      
+            <equals arg1="${dir.publish}" arg2="./"/>                      
+            <equals arg1="${dir.publish}" arg2="../"/>                      
+          </or>
+          <then>
+            <fail message="Your dir.publish folder is set to ${dir.publish} which could delete your entire site or worse. Change it in project.properties"/>      
+          </then>
+          <else>
+            <echo message="Creating directory structure... ${dir.publish}"/>
 
-        <mkdir dir="${dir.intermediate}"/>
-        <copy todir="${dir.intermediate}" includeEmptyDirs="true">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                <type type="dir"/>
-            </fileset>
-        </copy>
-
-        <mkdir dir="${dir.publish}"/>
-        <copy todir="${dir.publish}" includeEmptyDirs="true">
-            <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
-                <type type="dir"/>
-            </fileset>
-        </copy>
+            <mkdir dir="${dir.intermediate}"/>
+            <copy todir="${dir.intermediate}" includeEmptyDirs="true">
+                <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                    <type type="dir"/>
+                </fileset>
+            </copy>
+              <mkdir dir="${dir.publish}"/>
+              <copy todir="${dir.publish}" includeEmptyDirs="true">
+                  <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
+                      <type type="dir"/>
+                  </fileset>
+              </copy>                      
+          </else>
+      </if>                  
     </target>
     
     <target name="-copy" depends="-mkdirs">
@@ -424,9 +460,7 @@
             <fileset dir="${dir.source}/" excludes="${file.default.exclude}, ${file.exclude}">
                 <!-- exclude files that are superseded by optimized versions with different names -->
                 <!-- this is not strictly necessary, but it avoids putting unreferenced files into your server -->
-                <exclude name="${dir.js.main}/*.js"/>
-                <exclude name="${dir.js.libs}/**/*.js"/>
-                <exclude name="${dir.js.mylibs}/**/*.js"/>
+                <exclude name="${dir.js}/**/*.js"/>
                 <exclude name="${dir.css}/**/*.css"/>
             </fileset>
         </copy>
@@ -440,19 +474,22 @@
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
             <fileset dir="./${dir.intermediate}/">
-                <include name="${dir.js.main}/*.min.js"/>
+                <include name="${dir.js.main}/plugins.js"/>
+                <include name="${dir.js.main}/script.js"/>
             </fileset>      
         </concat>
     </target>
     
-    
     <target name="-js.mylibs.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js.mylibs">
+        <mkdir dir="./${dir.intermediate}/${dir.js.mylibs}"/>
+
         <echo message="Concatenating JS libraries"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
         <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
-            <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/">
-                <include name="**/*.min.js"/>
-            </fileset>      
+            <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/"
+                includes="**/*.js" 
+                excludes="${file.js.bypass}"/>                
+                  
         </concat>
     </target>
     
@@ -468,23 +505,29 @@
         </concat>
 
         <checksum file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" algorithm="sha" property="scripts.sha" />
-        <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
-        <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${scripts.js}" />
+        <if>
+            <isset property="gae.js_dir" />
+            <then>
+                <property name="scripts.js" value="${gae.js_dir}/${scripts.sha}.js" />
+            </then>
+            <else>
+                <property name="scripts.js" value="${dir.js}/${scripts.sha}.js" />
+            </else>
+        </if>
+        <copy file="${dir.intermediate}/${dir.js}/scripts-concat.min.js" tofile="${dir.publish}/${dir.js}/${scripts.sha}.js" />
     </target>
     
     
     <target name="-js.all.minify" depends="-mkdirs" description="(PRIVATE) Minifies the scripts.js files created by js.scripts.concat">
         <echo message="Minifying scripts"/>
-        <copy todir="${dir.intermediate}/${dir.js}">
-            <fileset dir="${dir.source}/${dir.js}" includes="**/*.min.js"/>
+        <copy todir="${dir.intermediate}/">
+            <fileset dir="${dir.source}/" includes="${dir.js}/**/*.min.js"  />
         </copy>
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.source}/${dir.js}">
-                <include name="**/*.js"/>
-                <exclude name="**/*.min.js"/>
-                <!-- minifying these is unnecessary, and will cause them to include themselves on the next build -->
-                <exclude name="scripts-concat.js"/>
-                <exclude name="libs-concat.js"/>
+            <fileset dir="${dir.source}/" >
+                <include name="${dir.js}/**/*.js"/>
+                <exclude name="${dir.js}/**/*.min.js"/>
+                <exclude name="${dir.js.mylibs}/**/*.js"/>
             </fileset>
             <arg line="-jar"/>
             <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
@@ -492,11 +535,26 @@
             <arg line="--line-break"/>
             <arg line="4000"/>
             <arg line="-o"/>
-            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/${dir.js}/*.min.js"/>
+            <mapper type="glob" from="*.js" to="${basedir}/${dir.intermediate}/*.js"/>
             <targetfile/>
         </apply>
-        <copy todir="${dir.publish}/${dir.js.libs}">
-            <fileset dir="${dir.intermediate}/${dir.js.libs}" includes="**/*.js"/>
+
+        <!-- at this point all js files are minified with their original names -->
+
+        <copy todir="${dir.publish}/">
+          <fileset dir="${dir.intermediate}/">
+              <include name="${dir.js}/**/*.js"/>
+              <exclude name="${dir.js.mylibs}/**/*.js"/>
+              <exclude name="${dir.js}/scripts-concat.js"/>
+              <exclude name="${dir.js}/libs-concat.js"/>
+              <exclude name="${dir.js}/scripts-concat.min.js"/>
+              <exclude name="${dir.js}/plugins.js"/>
+              <exclude name="${dir.js}/script.js"/>
+          </fileset>                                   
+        </copy>
+        <copy todir="${dir.publish}/${dir.js.mylibs}/">
+            <fileset dir="${dir.source}/${dir.js.mylibs}/"
+            includes="${file.js.bypass}"/>           
         </copy>
     </target>
     
@@ -537,24 +595,27 @@
         </replaceregexp>
         
         <echo>Remove favicon.ico reference if it is pointing to the root</echo>
-        <replaceregexp match="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon\.ico&quot;&gt;" replace="">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+        <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
         <replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replace>
         -->
 
         <echo message="Update the HTML to reference our concatenated script file: ${scripts.js}"/>
         <!-- style.css replacement handled as a replacetoken above -->
         <replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${scripts.js}\'&gt;&lt;/script&gt;" flags="m">
-            <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!--[! use comments like this one to avoid having them get minified -->
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
-        <replace token="href=&quot;${dir.css}/style.css&quot;" value="href=&quot;${style.css}&quot;" dir="${dir.intermediate}" includes="${page-files}"/>
+
+        <replaceregexp match="&lt;!-- CSS concatenated [\d\w\s\W]*?!-- end CSS--&gt;" replace="&lt;link rel='stylesheet' href='${style.css}'&gt;" flags="m">
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+        </replaceregexp>
     </target>
     
     
@@ -572,6 +633,7 @@
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -594,6 +656,7 @@
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -615,6 +678,7 @@
             <arg line="--compress-js"/>
             <arg line="--compress-css"/>
             <arg line="--preserve-php"/>
+            <arg line="--preserve-ssi"/>
             <srcfile/>
             <arg value="-o"/>
             <mapper type="glob" from="*" to="../${dir.publish}/*"/>
@@ -624,20 +688,130 @@
 
 
     <!-- CSS -->
+
+    <target name="-css-remove-concatenated-stylesheets">
+            <echo>Removing ${css_file} from html</echo>
+            <replaceregexp match="&lt;link.+href=&quot;.*${css_file}&quot;.*&gt;" replace="  ">
+                <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+            </replaceregexp>       
+    </target>
+        
+
+    <target name="css-split" description="turns style.css into multiple files @imported together">
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${file.root.stylesheet}.temp"/>
+        
+        <replaceregexp file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" 
+               match=".*" 
+               replace="/* remove me */" flags="s" />
+    
+        <loadfile property="root" srcfile="${dir.source}/${dir.css}/${file.root.stylesheet}"/>
+        <var name="curr.buffer" value=""/>
+    
+        <ac:for delimiter="${line.separator}" param="currline" list="${root}" xmlns:ac="antlib:net.sf.antcontrib">
+            <sequential>
+                <!-- does this line contain an h5bp-import? -->
+                <propertyregex property="export.name" input="@{currline}" regexp="^.*- h5bp-export: (.*) -.*$" select="\1" casesensitive="true" override="true" />
+
+                <if>
+                    <isset property="export.name"/>
+                    <then>
+                        <if>
+                            <isset property="curr.file"/>
+                            <then>
+                                <!-- create curr.file -->
+                                <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${curr.file}" overwrite="true"/>
+                                <!-- write the curr.buffer into the curr.file -->
+                                <replaceregexp file="${dir.source}/${dir.css}/${curr.file}" 
+                                       match=".*" 
+                                       replace="${curr.buffer}" flags="s" />
+                                
+                                <var name="curr.buffer" value=""/>
+                                <var name="curr.file" unset="true"/>
+                            </then>
+                        </if>
+                        <var name="curr.file" value="${export.name}"/>
+                        <var name="export.name" unset="true"/>
+
+                    
+                        <!-- insert import line into new root -->
+                        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value="@import(${curr.file});${line.separator}/* remove me */"/>
+                    </then>
+                </if>
+                <var name="curr.buffer" value="${curr.buffer}@{currline}${line.separator}" />                                        
+            </sequential>
+        </ac:for>
+        <!-- one more time to write out the last file -->
+        <if>
+            <isset property="curr.file"/>
+            <then>
+                <!-- create curr.file -->
+                <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${curr.file}" overwrite="true"/>
+                <!-- write the curr.buffer into the curr.file -->
+                <replaceregexp file="${dir.source}/${dir.css}/${curr.file}" 
+                       match=".*" 
+                       replace="${curr.buffer}" flags="s" />
+                
+                <var name="curr.buffer" value=""/>
+                <var name="curr.file" unset="true"/>
+            </then>
+        </if>
+        <replace file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" token="/* remove me */" value=""/>
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.source}/${dir.css}/${file.root.stylesheet}.orig" overwrite="false"/>
+        <move file="${dir.source}/${dir.css}/${file.root.stylesheet}.temp" tofile="${dir.source}/${dir.css}/${file.root.stylesheet}" overwrite="false"/>
+    </target>
+    
     <target name="-css" depends="-mkdirs" description="Concatenates and Minifies any stylesheets listed in the file.stylesheets property">
-        <echo message="Concatenating css..."/>
+        <echo message="Concatenating imports..."/>
+
+        <!-- copy source file to intermediate directory -->
+        <copy file="${dir.source}/${dir.css}/${file.root.stylesheet}" tofile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
+
+        <!-- replace imports with h5bp-import tags (part 1) this one wraps @media types -->
+        <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
+                       match="^@import *url *\( *'?([^'^ ]*)'? *\) *([a-zA-Z, ]*);.*$" 
+                       replace="@media \2{ /* h5bp-import: \1 */ }" byline="true" />
         
-        <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no">
-            <filelist dir="./${dir.source}/${dir.css}" files="${stylesheet-files}"/>
-        </concat>
-        
+        <!-- replace imports with h5bp-import tags (part 2) -->
+        <replaceregexp file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}" 
+                       match="^@media \{ (/\* .* \*/) \}" replace="\1" byline="true" />
+
+        <!-- copy skeleton to concat file -->
+        <copy file="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"
+              tofile="${dir.intermediate}/${dir.css}/style-concat.css" overwrite="true"/>
+
+        <!-- load the file into a property -->
+        <loadfile property="imports" srcfile="${dir.intermediate}/${dir.css}/${file.root.stylesheet}"/>
+
+        <var name="concat-files" value="${file.root.stylesheet}"/>
+
+        <!-- go over the file line by line -->
+        <ac:for delimiter="${line.separator}" param="import" list="${imports}" xmlns:ac="antlib:net.sf.antcontrib">
+            <sequential>
+                <!-- does this line contain an h5bp-import? -->
+                <propertyregex property="file.name" input="@{import}" regexp="/\* h5bp-import: (.*) \*/" select="\1" casesensitive="true" override="true" />
+
+                <if>
+                    <isset property="file.name"/>
+                    <then>
+                        <var name="concat-files" value="${file.name},${concat-files}"/>
+
+                        <!-- load the file into a variable -->
+                        <loadfile property="file.contents" srcFile="${dir.source}/${dir.css}/${file.name}"/>
+
+                        <!-- pop that file into the concatenated output file -->
+                        <replace file="${dir.intermediate}/${dir.css}/style-concat.css" token="/* h5bp-import: ${file.name} */" value="${file.contents}"/>
+
+                        <var name="file.contents" unset="true"/>
+                    </then>
+                </if>
+            </sequential>
+        </ac:for>
         <echo message="Minifying css..."/>
         
         <apply executable="java" parallel="false">
-            <fileset dir="./${dir.intermediate}/${dir.css}/" includes="style-concat.css"/>
+            <fileset dir="${dir.intermediate}/${dir.css}/" includes="style-concat.css"/>
             <arg line="-jar"/>
-            <arg path="./${dir.build.tools}/${tool.yuicompressor}"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
             <srcfile/>
             <arg line="-o"/>
             <mapper type="merge" to="${basedir}/${dir.intermediate}/${dir.css}/style-concat.min.css"/>
@@ -645,8 +819,29 @@
         </apply>
 
         <checksum file="${dir.intermediate}/${dir.css}/style-concat.min.css" algorithm="sha" property="css.sha" />
-        <property name="style.css" value="${dir.css}/${css.sha}.css" />
-        <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${style.css}" />
+        <if>
+            <isset property="gae.css_dir" />
+            <then>
+                <property name="style.css" value="${gae.css_dir}/${css.sha}.css" />
+            </then>
+            <else>
+                <property name="style.css" value="${dir.css}/${css.sha}.css" />
+            </else>
+        </if>
+        <copy file="${dir.intermediate}/${dir.css}/style-concat.min.css" tofile="${dir.publish}/${dir.css}/${css.sha}.css" />
+
+        <echo message="Minifying any unconcatenated css files..."/>
+
+        <apply executable="java" parallel="false">
+            <fileset dir="${dir.source}/${dir.css}/" excludes="${concat-files}" includes="**/*.css"/>
+            <arg line="-jar"/>
+            <arg path="${dir.build.tools}/${tool.yuicompressor}"/>
+            <srcfile/>
+            <arg line="-o"/>
+            <mapper type="glob" from="*.css" to="${basedir}/${dir.publish}/${dir.css}/*.css"/>
+            <targetfile/>
+        </apply>
+        <foreach list="${file.stylesheets}" param="css_file" target="-css-remove-concatenated-stylesheets" />        
     </target>
     
     
@@ -668,13 +863,13 @@
             </and>
             <then>
                 <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
-                <apply executable="rm" dest="./${dir.publish}/${dir.images}/" osfamily="unix" addsourcefile="false">
-                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
-                    <targetfile/>
-                    <mapper type="identity"/>
-                </apply>
+                <delete>
+                    <fileset dir="./${dir.publish}/${dir.images}/">
+                        <include name="**/*.png"/>
+                    </fileset>
+                </delete>
                 <apply executable="optipng" dest="./${dir.publish}/${dir.images}/" osfamily="unix">
-                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
+                    <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-quiet"/>
                     <arg value="-o7"/>
                     <arg value="-out"/>
@@ -694,15 +889,13 @@
         </if>
 
         <!-- work around https://sourceforge.net/tracker/?func=detail&aid=2671422&group_id=151404&atid=780916 -->
-        <apply executable="cmd" dest="./${dir.publish}/${dir.images}/" osfamily="windows" addsourcefile="false">
-            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
-						<arg value="/c"/>
-						<arg value="del"/>
-            <targetfile/>
-            <mapper type="identity"/>
-        </apply>
-        <apply executable="${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
-            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"/>
+        <delete>
+            <fileset dir="./${dir.publish}/${dir.images}/">
+                <include name="**/*.png"/>
+            </fileset>
+        </delete>
+        <apply executable="${basedir}/${dir.build.tools}/optipng-0.6.4-exe/optipng.exe" dest="./${dir.publish}/${dir.images}/" osfamily="windows">
+            <fileset dir="./${dir.source}/${dir.images}/" includes="**/*.png"  excludes="${images.bypass}, ${images.default.bypass}"/>
             <arg value="-quiet"/>
             <arg value="-o7"/>
             <arg value="-out"/>
@@ -715,7 +908,7 @@
 
     <target name="-imagesjpg" depends="-mkdirs" description="(PRIVATE) Optimizes .jpg images using jpegtan">
         <echo message="Now, we clean up those jpgs..."/>
-        
+
         <if>
             <equals arg1="${images.strip.metadata}" arg2="true"/>
             <then>
@@ -734,7 +927,7 @@
             </and>
             <then>
                 <apply executable="jpegtran" dest="./${dir.publish}/${dir.images}" osfamily="unix">
-                    <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
+                    <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg" excludes="${images.bypass}, ${images.default.bypass}"/>
                     <arg value="-copy"/>
                     <arg value="${strip-meta-tags}"/>
                     <arg value="-optimize"/>
@@ -756,8 +949,8 @@
             </elseif>
         </if>
 
-        <apply executable="${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
-            <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"/>
+        <apply executable="${basedir}/${dir.build.tools}/jpegtran.exe" dest="./${dir.publish}/${dir.images}" osfamily="windows">
+            <fileset dir="${dir.source}/${dir.images}" includes="**/*.jpg"  excludes="${images.bypass}, ${images.default.bypass}"/>
             <arg value="-copy"/>
             <arg value="${strip-meta-tags}"/>
             <arg value="-optimize"/>
@@ -770,14 +963,13 @@
         </apply>
     </target>
 
-    
+
     <target name="-imgcopy" depends="-mkdirs">
         <echo message="Copying over the unmodified images."/>
-        
+
         <copy todir="./${dir.publish}/${dir.images}">
             <fileset dir="${dir.source}/${dir.images}"  includes="**/*.jpg, **/*.png"/>
         </copy> 
     </target>
-
     
 </project>
