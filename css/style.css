@@ -1,12 +1,11 @@
 /* 
  * HTML5 ✰ Boilerplate
  *
- * What follows is the result of much research on cross-browser styling. 
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- *
- * Detailed information about this CSS: h5bp.com/css
- * 
+ * 这个CSS文件来自normalize.css
+ * 这是一组已经定制好的css规则，通过它可以让你的html元素在所有浏览器中都表现的跟现代浏览器（firefox、chrome）一致。
+ * 与我们经常提到的reset.css不同的是，它并不重置所有的css样式，而是保留了有用的默认值，而对那些会产生浏览器兼容性的html元素样式进行调整。 
+ * 这个CSS文件的详细信息: h5bp.com/css
+ * 这个文件有待修改，因为英文网页必竟与中文不同
  * ==|== normalize ==========================================================
  */
 
