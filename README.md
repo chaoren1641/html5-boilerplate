@@ -345,7 +345,7 @@ voodootikigod, garowetz, fearphage, christopherjacob, mathias bynens, daniel har
 
 ## License:
 
-Major components:
+包含的主要组件如下:
 
 * Modernizr: MIT/BSD license
 * jQuery: MIT/GPL license
@@ -359,26 +359,27 @@ Everything else:
 * [The Unlicense](http://unlicense.org) (aka: public domain) 
 
 
-## Summary:
+## 摘要:
 
-This is a set of files that a front-end developer can use to get started on a website, with following included:
+这是一个现成网站前端架构，前端开发者可以使用这里的文件搭建一个网站，以下是它包括的功能：
 
-1. Cross-browser compatible (IE6? Yeah, we got that.)
-2. HTML5 ready. Use the new tags with certainty.
-3. Optimal caching and compression rules for Grade-A performance
-4. Best practice site configuration defaults
+
+1. 跨浏览器兼容,IE6？当然没问题
+2. 为HTML5做的准备，使用HTML新标签。
+3. 顶级性能的缓存优化和压缩规则
+4. 最佳实践的网站配置
 5. Think there's too much? The HTML5 Boilerplate is delete-key friendly. :)
-6. Mobile browser optimizations
-7. Progressive enhancement graceful degredation ........ yeah yeah we got that
+6. 移动设备浏览器优化
+7. 渐进增强和平稳退化
 8. IE-specific classes for maximum cross-browser control
-9. Want to write unit tests but lazy? A full, hooked up test suite is waiting for you.
+9. 想写单元测试又懒惰，一个完整的测试套件为你准备好了。
 10. Javascript profiling…in IE6 and IE7? Sure, no problem.
 11. Console.log nerfing so you won't break anyone by mistake.
-12. Never go wrong with your doctype or markup!
-13. An optimal print stylesheet, performance optimized
-14. iOS, Android, Opera Mobile-adaptable markup and CSS skeleton.
+12. 绝对没有问题的doctype标记
+13. 最佳的打印样式，性能也作了优化
+14. 适合IOS，Android和Opera移动端CSS的框架。
 15. IE6 pngfix baked in.
-16. jQuery, waiting for you
+16. jQuery等着你来使用
 
 ## Releases 
 
