@@ -56,10 +56,10 @@
   <!-- end scripts-->
 
 	
-  <!-- 你的浏量统计代码，下面是google统计示例，尽量使用Modernizr的load方法去加载，因为它通常不涉及到DOM操作，可使用异步 -->
+  <!-- 你的浏量统计代码，下面是google统计示例，尽量使用脚本加载器去加载，因为它通常不涉及到DOM操作，可使用异步 -->
   <script>
     window._gaq = [['_setAccount','UAXXXXXXXX1'],['_trackPageview'],['_trackPageLoadTime']];
-    Modernizr.load({
+    Modernizr.load({//Modernizr默认没有包含任何加载器，但是官方在线生成时它会提示你是否要包含yepnope.js,通常都会把他们组合在一起
       load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
     });
   </script>
