@@ -56,7 +56,7 @@ Everything else:
 * ----jquery-ui/	jqueryUI库目录
 * --pwlibs			自己根据项目中的业务写的libs，如form检测、各种业务组件
 * test/				单元测试（考虑要不要写JS单元测试？）
-* .htaccess			站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
+* .htaccess			站点的服务器配置(apache)，其它服务器的看这里https://github.com/paulirish/html5-boilerplate-server-configs（这需要有足够的服务器权限，一般不会怎么用）
 * 404.html			404文件，这个与前端关系不大，取决于网站整体架构
 * README.md			项目说明，github需要
 * crossdomain.xml	flash里使用到跨域功能配置
