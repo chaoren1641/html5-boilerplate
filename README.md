@@ -53,9 +53,9 @@ Everything else:
 * demo/			demo
 * img/			图片文件目录
 * js/	  		js文件目录
-** libs/		js通用库，如jquery,modernizr
-*** jquery-ui/	jqueryUI库目录
-** pwlibs		自己根据项目中的业务写的libs，如form检测、各种业务组件
+* --libs/		js通用库，如jquery,modernizr
+* ----jquery-ui/	jqueryUI库目录
+* --pwlibs		自己根据项目中的业务写的libs，如form检测、各种业务组件
 * test/	单元测试
 * .htaccess	站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
 * 404.html	404文件，这个与前端关系不大，取决于网站整体架构
