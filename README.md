@@ -47,25 +47,25 @@ Everything else:
 15. IE6 pngfix baked in.
 16. jQuery等着你来使用
 
-## 文件结构说明 
-build/	包含一组前端打包和发布的工具
-css/	css文件目录
-demo/	demo
-img/	图片文件目录
-js/	  	js文件目录
-test/	单元测试
-.htaccess	站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
-404.html	404文件，这个与前端关系不大，取决于网站整体架构
-README.md	项目说明，github需要
-apple-touch-icon-114x114-precomposed.png	iphone4桌面方式快捷图标（iphone4）
-apple-touch-icon-57x57-precomposed.png	iphone 3gs
-apple-touch-icon-72x72-precomposed.png	ipad1
-apple-touch-icon-precomposed.png	其它touch设备图标
-apple-touch-icon.png	
-crossdomain.xml	flash里使用到跨域功能配置
-favicon.ico	网站图标
-humans.txt	不理解为什么要这个，google网站有这个文件
-index.html	首页，同时网页HTML结构也按这个页面来
-robots.txt 	站点蜘蛛爬行配置文件
+## 文件结构说明 （目录结构并不代表所有的项目都应该遵照）
+* build/	包含一组前端打包和发布的工具
+* css/	css文件目录
+* demo/	demo
+* img/	图片文件目录
+* js/	  	js文件目录
+* test/	单元测试
+* .htaccess	站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
+* 404.html	404文件，这个与前端关系不大，取决于网站整体架构
+* README.md	项目说明，github需要
+* apple-touch-icon-114x114-precomposed.png	iphone4桌面方式快捷图标（iphone4）
+* apple-touch-icon-57x57-precomposed.png	iphone 3gs
+* apple-touch-icon-72x72-precomposed.png	ipad1
+* apple-touch-icon-precomposed.png	其它touch设备图标
+* apple-touch-icon.png	
+* crossdomain.xml	flash里使用到跨域功能配置
+* favicon.ico	网站图标
+* humans.txt	不理解为什么要这个，google网站有这个文件
+* index.html	首页，同时网页HTML结构也按这个页面来
+* robots.txt 	站点蜘蛛爬行配置文件
 
 
