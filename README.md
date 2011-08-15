@@ -1,5 +1,5 @@
 ##  通用前端整体解决方案 [http://html5boilerplate.com](http://html5boilerplate.com)
-#### 这是一个非常棒的前端整体架构方案，由[http://paulirish.com/](paulirish)发起,多位国外优秀的前端工程师构建
+#### 这是一个非常棒的前端整体架构方案，由[paulirish](http://paulirish.com/)发起,多位国外优秀的前端工程师构建
 #### 这是一个分支，原项目地址：[https://github.com/paulirish/html5-boilerplate](https://github.com/paulirish/html5-boilerplate)
 
 [点击这里可以查看项目历史更改](http://github.com/paulirish/html5-boilerplate/compare/v0.9...v0.9.1)
@@ -40,19 +40,22 @@ Everything else:
 8. 最有效的不同IE浏览器的Css Class控制,很好的处理各个版本的CSS Hack问题
 9. 想写单元测试又懒惰，一个完整的测试套件为你准备好了。
 10. IE6 IE7的JS代码分析
-11. Console.log nerfing so you won't break anyone by mistake.
+11. 集成了一个轻量级的console.log，不用担心发布后产生错误。
 12. 绝对没有问题的doctype标记
 13. 最佳的打印样式，性能也作了优化
 14. 适合IOS，Android和Opera移动端CSS的框架。
 15. IE6 pngfix baked in.
 16. jQuery等着你来使用
 
-## 文件结构说明 （目录结构并不代表所有的项目都应该遵照）
-* build/	包含一组前端打包和发布的工具
-* css/	css文件目录
-* demo/	demo
-* img/	图片文件目录
-* js/	  	js文件目录
+## 文件结构说明 	（目录结构并不代表所有的项目都应该遵照）
+* build/		包含一组前端打包和发布的工具
+* css/			css文件目录
+* demo/			demo
+* img/			图片文件目录
+* js/	  		js文件目录
+** libs/		js通用库，如jquery,modernizr
+*** jquery-ui/	jqueryUI库目录
+** pwlibs		自己根据项目中的业务写的libs，如form检测、各种业务组件
 * test/	单元测试
 * .htaccess	站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
 * 404.html	404文件，这个与前端关系不大，取决于网站整体架构
