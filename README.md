@@ -1,4 +1,3 @@
-##  通用前端整体解决方案 [http://html5boilerplate.com](http://html5boilerplate.com)
 #### 这是一个非常棒的前端整体架构方案，由[paulirish](http://paulirish.com/)发起,多位国外优秀的前端工程师构建
 #### 这是一个分支，原项目地址：[https://github.com/paulirish/html5-boilerplate](https://github.com/paulirish/html5-boilerplate)
 
@@ -34,7 +33,7 @@ Everything else:
 2. 为HTML5做的准备，使用HTML5新标签。
 3. 顶级性能的缓存优化和压缩规则(build工具集和.htaccess,对于服务器有足够权限的可以使用它们)
 4. 最佳实践的网站配置
-5. Think there's too much? The HTML5 Boilerplate is delete-key friendly. :)
+5. Think there's too much? The HTML5 Boilerplate is delete-key friendly. :)（后面一句怎么翻译？囧！）
 6. 移动设备浏览器优化
 7. 渐进增强和平稳退化
 8. 最有效的不同IE浏览器的Css Class控制,很好的处理各个版本的CSS Hack问题
@@ -47,28 +46,23 @@ Everything else:
 15. IE6 pngfix baked in.
 16. jQuery等着你来使用
 
-## 文件结构说明 	（目录结构并不代表所有的项目都应该遵照）
-* build/		包含一组前端打包和发布的工具
-* css/			css文件目录
-* demo/			demo
-* img/			图片文件目录
-* js/	  		js文件目录
-* --libs/		js通用库，如jquery,modernizr
+## 文件目录结构说明 	（目录结构并不代表项目中应该完全遵照，名称可根据需要更改）
+* build/			包含一组前端打包和发布的工具（产品不一定用得上）
+* css/				css文件目录
+* demo/				demo
+* img/				图片文件目录
+* js/	  			js文件目录
+* --libs/			js通用库，如jquery,modernizr
 * ----jquery-ui/	jqueryUI库目录
-* --pwlibs		自己根据项目中的业务写的libs，如form检测、各种业务组件
-* test/	单元测试
-* .htaccess	站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
-* 404.html	404文件，这个与前端关系不大，取决于网站整体架构
-* README.md	项目说明，github需要
-* apple-touch-icon-114x114-precomposed.png	iphone4桌面方式快捷图标（iphone4）
-* apple-touch-icon-57x57-precomposed.png	iphone 3gs
-* apple-touch-icon-72x72-precomposed.png	ipad1
-* apple-touch-icon-precomposed.png	其它touch设备图标
-* apple-touch-icon.png	
+* --pwlibs			自己根据项目中的业务写的libs，如form检测、各种业务组件
+* test/				单元测试（考虑要不要写JS单元测试？）
+* .htaccess			站点的apache服务器配置（需要有足够的服务器权限，一般不会怎么用）
+* 404.html			404文件，这个与前端关系不大，取决于网站整体架构
+* README.md			项目说明，github需要
 * crossdomain.xml	flash里使用到跨域功能配置
-* favicon.ico	网站图标
-* humans.txt	不理解为什么要这个，google网站有这个文件
-* index.html	首页，同时网页HTML结构也按这个页面来
-* robots.txt 	站点蜘蛛爬行配置文件
+* favicon.ico		网站图标
+* humans.txt		不理解为什么要这个，google网站有这个文件
+* index.html		页页HTML结构参照文件
+* robots.txt 		站点蜘蛛访问配置文件
 
 
