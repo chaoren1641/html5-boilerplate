@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>jQuery Tools standalone demo</title> 
+	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/tabs.css" /> 
+<style> 
+.panes div {
+	display:none;		
+	padding:15px 10px;
+	border:1px solid #999;
+	border-top:0;
+	height:100px;
+	font-size:14px;
+	background-color:#fff;
+}
+</style> 
+</head> 
+ 
+<body> 
+ 
+<ul class="tabs"> 
+	<li><a href="#">Tab 1</a></li> 
+	<li><a href="#">Tab 2</a></li> 
+	<li><a href="#">Tab 3</a></li> 
+</ul> 
+ 
+<!-- tab "panes" --> 
+<div class="panes"> 
+	<div>First tab content. Tab contents are called "panes"</div> 
+	<div>Second tab content</div> 
+	<div>Third tab content</div> 
+</div> 
+ 
+ 
+<script> 
+ 
+$(function() {
+	$("ul.tabs").tabs("div.panes > div");
+});
+</script> 
+ 
+ 
+ 
+</body> 
+ 
+</html> 

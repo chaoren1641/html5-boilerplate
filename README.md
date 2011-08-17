@@ -1,12 +1,7 @@
-#### 这是一个非常棒的前端整体架构方案，由[paulirish](http://paulirish.com/)发起,多位国外优秀的前端工程师构建
-#### 这是一个分支，原项目地址：[https://github.com/paulirish/html5-boilerplate](https://github.com/paulirish/html5-boilerplate)
+### 非常棒的前端整体架构方案，由[paulirish](http://paulirish.com/)发起,多位国外优秀的前端工程师构建
+### 这是一个分支，原项目地址：[https://github.com/paulirish/html5-boilerplate](https://github.com/paulirish/html5-boilerplate)
 
 [点击这里可以查看项目历史更改](http://github.com/paulirish/html5-boilerplate/compare/v0.9...v0.9.1)
-
-## 感谢:
-
-voodootikigod, garowetz, fearphage, christopherjacob, mathias bynens, daniel harttman, rse, chris dary, erik dahlstrom, timwillison, kenneth nordahl, riddle, elcuervo, andreas kuckartz, 3rdEden, riley willis, majic3
-
 
 ## License:
 
@@ -19,9 +14,9 @@ voodootikigod, garowetz, fearphage, christopherjacob, mathias bynens, daniel har
 * HTML5Doctor CSS reset: Public Domain
 * CSS Reset Reloaded: Public Domain
 
-Everything else:
+其它:
 
-* [The Unlicense](http://unlicense.org) (aka: public domain) 
+* [关于 Public Domain](http://unlicense.org) (unlicense又叫做Public Domain) 
 
 
 ## 摘要:
@@ -62,7 +57,7 @@ Everything else:
 * crossdomain.xml	flash里使用到跨域功能配置
 * favicon.ico		网站图标
 * humans.txt		不理解为什么要这个，google网站有这个文件
-* index.html		页页HTML结构参照文件
+* index.html		页面HTML结构参照文件
 * robots.txt 		站点蜘蛛访问配置文件
 
 

@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kreon'), url('Kreon-Regular.woff') format('woff');
+}
+body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+menu, ul{list-style:none inside}
+a{text-decoration:none;color:#24B;}
+a:active{text-decoration:none;color:#24B;}
+ol{ list-style-position:inside;}
+body{font:14px/26px "Lucida Grande",Helvetica,"Microsoft YaHei",Arial,sans-serif;color:#333;}
+#container {
+	width:1000px;
+	margin:0 auto 20px;
+	padding:10px 40px;
+	-moz-box-shadow:0 10px 14px rgba(0, 0, 0, 0.8);
+	-webkit-box-shadow: 0 10px 14px rgba(0, 0, 0, 0.8);
+	font:16px/28px "Lucida Grande",Helvetica,"Microsoft YaHei",Arial,sans-serif;color:#333;
+}
+#container h1,#container h2{font-family: 'Kreon', arial, serif; text-shadow: 1px 1px 1px #333; }
+#container ul{margin-left:20px;}
+#container h1{font-size:48px;line-height:48px;text-align:center;margin:10px 0;}
+#container p{margin:5px 0;}
+#container .footer{text-align:center;}
+menu{margin:10px 0 0 0;padding:0;}
+menu h4{font-size:1.2em;margin:0;border-bottom:1px solid #ccc;padding:0px 0.5em;cursor:pointer;}
+menu h4 sub{padding-left:0.8em;color:#bbb;font-size:0.8em;}
+menu ul{display:none;}
+menu h4:hover{text-shadow:2px 2px 2px #ddd;}
+menu ul li{border-bottom:1px solid #eee;text-indent:1em;padding-left:1em;}
+menu ul li.current{padding-left:1em;color:#f90;}
+menu ul li.current a{color:#f90;font-weight:bold;}
+h1{border-bottom:1px solid #cee1ee;}
+h2{font-size:1.5em;margin:0.5em 0;}
+h3{font-size:1.2em;margin:3px;}
+h4{font-size:1.1em;margin:1px;}
+h5{margin:0;}
+h2 a{color:#0056A9;}
+nav{background:#F2F8FA;padding:1em;font-weight:bold;display:block;-moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;border:1px solid #cee1ee;}
+pre
+{
+    background:#F7F7F7;
+    border:1px solid #ccc;
+    font-size:12px;
+    list-style-type:decimal-leading-zero;
+    padding:10px;
+    padding-right:1em;
+    font-family: 'Monaco',Courier,monospace !important;
+    -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px;
+}
+pre .keyword {font-weight: bold; color: blue;}
+pre .string, code .regexp, code .number { color: #FF39FF}
+pre .class, code .special { color: #000 }
+pre .comment { color: green; }
+code{font-style:italic;color:#666;font-weight:normal;}
+article{padding:1em;border-bottom:1px solid #cee1ee;}
+div{margin:0.5em;}
+section{margin-left:10px;display:block;border-left:1px solid #ccc;padding-left:1em;}
+blockquote{margin:1em 0;padding:1em;background:#eee;color:#666; font-style:italic;font-weight:bold;}
+.app{color:#1B72AF;}
