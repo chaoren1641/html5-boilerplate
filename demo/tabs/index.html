@@ -1,47 +1,73 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/tabs.css" /> 
+	<title>标准tab demo</title> 
+	<script src="../../js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
 <style> 
-.panes div {
-	display:none;		
-	padding:15px 10px;
-	border:1px solid #999;
-	border-top:0;
-	height:100px;
-	font-size:14px;
-	background-color:#fff;
-}
+
 </style> 
 </head> 
  
 <body> 
- 
+<div class="container">
+<div class="page-header">
+    <h1>选项卡</h1>
+</div>
 <ul class="tabs"> 
+	<li class="active"><a href="#">Tab 1</a></li> 
+	<li><a href="#">Tab 2</a></li> 
+	<li><a href="#">Tab 3</a></li> 
+</ul> 
+<!-- tab "panes" --> 
+<div class="panes"> 
+	<div>第一个选项卡</div> 
+	<div>第二个选项卡</div> 
+	<div>第三个选项卡</div> 
+</div> 
+
+
+ <!--demo code start-->
+ <h2>html</h2>
+ <textarea class="html">
+ <ul class="tabs"> 
 	<li><a href="#">Tab 1</a></li> 
 	<li><a href="#">Tab 2</a></li> 
 	<li><a href="#">Tab 3</a></li> 
 </ul> 
  
-<!-- tab "panes" --> 
 <div class="panes"> 
-	<div>First tab content. Tab contents are called "panes"</div> 
-	<div>Second tab content</div> 
-	<div>Third tab content</div> 
+	<div>第一个选项卡</div> 
+	<div>第二个选项卡</div> 
+	<div>第三个选项卡</div> 
 </div> 
- 
- 
-<script> 
- 
+
+</textarea>
+
+<h2>js</h2>
+<textarea class="js">
 $(function() {
-	$("ul.tabs").tabs("div.panes > div");
+	yepnope({
+  		load: alias.tabs,
+  		callback: function (url, result, key) {
+			$("ul.tabs").tabs("div.panes > div");
+  		}
+	});
+});
+</textarea>
+<!--demo code stop-->
+</div>
+<script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script type="text/javascript">
+$(function() {
+	yepnope({
+  		load: alias.tabs,
+  		callback: function (url, result, key) {
+			$("ul.tabs").tabs("div.panes > div");
+  		}
+	});
 });
 </script> 
- 
- 
- 
 </body> 
- 
 </html> 

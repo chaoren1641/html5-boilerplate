@@ -1,126 +1,77 @@
-
- 
 <!DOCTYPE html> 
- 
 <html> 
- 
-<!--
-	This is a jQuery Tools standalone demo. Feel free to copy/paste.
-	                                                         
-	http://flowplayer.org/tools/demos/
-	
-	Do *not* reference CSS files and images from flowplayer.org when in production  
- 
-	Enjoy!
---> 
- 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
- 
-	<!-- include the Tools --> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	 
- 
-	<!-- standalone page styling (can be removed) --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
- 
- 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/overlay-basic.css"/> 
-	
-	<style> 
-	/* some styling for triggers */
-	#triggers {
-		text-align:center;
-	}
-	
-	#triggers img {
-		cursor:pointer;
-		margin:0 5px;
-		background-color:#fff;
-		border:1px solid #ccc;
-		padding:2px;
-	
-		-moz-border-radius:4px;
-		-webkit-border-radius:4px;
-		
-	}
-	
-	
-	
-	/* styling for elements inside overlay */
-	.details {
-		position:absolute;
-		top:15px;
-		right:15px;
-		font-size:11px;
-		color:#fff;
-		width:150px;
-	}
-	
-	.details h3 {
-		color:#aba;
-		font-size:15px;
-		margin:0 0 -10px 0;
-	}
-	</style> 
+	<title>标准tab demo</title> 
+	<script src="../../js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+<style> 
+
+</style> 
 </head> 
  
 <body> 
- 
-<!-- trigger elements --> 
-<div id="triggers"> 
-	<img src="http://farm4.static.flickr.com/3651/3445879840_7ca4b491e9_m.jpg" rel="#mies1"/> 
-	<img src="http://farm4.static.flickr.com/3346/3449388113_71a06b8548_m.jpg" rel="#mies2"/> 
-</div> 
- 
-<!-- overlays --> 
-<div class="simple_overlay" id="mies1"> 
-	<img src="http://farm4.static.flickr.com/3651/3445879840_7ca4b491e9.jpg" /> 
- 
-	<div class="details"> 
-		<h3>The Barcelona Pavilion</h3> 
- 
-		<h4>Barcelona, Spain</h4> 
- 
-		<p> 
-			The Barcelona Pavilion, designed by Ludwig Mies van der Rohe, was the German Pavilion for the 1929 International Exposition in Barcelona, Spain. It was an important building in the history of modern architecture.
-		</p> 
- 
-		<p> 
-			Several critics, historians and modernists have declared it "the most beautiful building of the century"
-		</p> 
-	</div> 
-</div> 
- 
-<div class="simple_overlay" id="mies2"> 
-	<img src="http://farm4.static.flickr.com/3346/3449388113_71a06b8548.jpg" /> 
-	<div class="details"> 
-		<h3>The Barcelona Pavilion</h3> 
- 
-		<h4>Barcelona, Spain</h4> 
- 
-		<p> 
-			Another unique feature of this building is the <em>exotic materials Mies chose to use</em>.
-		</p> 
- 
-		<p> 
-			Plates of high-grade stone materials like veneers of Tinos verde antico marble and golden onyx as well as tinted glass of grey, green, white, in addition to translucent glass, perform exclusively as spatial dividers.
-		</p> 
-	</div> 
-</div> 
- 
-<script> 
-// What is $(document).ready ? See: http://flowplayer.org/tools/documentation/basics.html#document_ready
-$(document).ready(function() {
- 
- 
- 
-$("img[rel]").overlay();
+<div class="container">
+<div class="page-header">
+    <h1>弹出窗口</h1>
+</div>
+<a href="#" class="btn" rel="#pop1">点击我试试</a>
+<div class="modal" id="pop1" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1;display:none;">
+	<div class="modal-header">
+		<h3>Modal Heading</h3>
+		<a href="#" class="close">×</a>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn primary">Primary</a>
+		<a href="#" class="btn secondary">Secondary</a>
+	</div>
+ </div>
+
+ <!--demo code start-->
+ <h2>html</h2>
+ <textarea class="html">
+<a href="#" class="btn" rel="#pop1">点击我试试</a>
+<div class="modal" id="pop1" style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1;display:none;">
+	<div class="modal-header">
+		<h3>Modal Heading</h3>
+		<a href="#" class="close">×</a>
+	</div>
+	<div class="modal-body">
+		<p>One fine body…</p>
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn primary">Primary</a>
+		<a href="#" class="btn secondary">Secondary</a>
+	</div>
+ </div>
+</textarea>
+
+<h2>js</h2>
+<textarea class="js">
+$(function() {
+	yepnope({
+  		load: '../../js/uilibs/overlay/overlay.js',
+  		callback: function (url, result, key) {
+			$("a[rel]").overlay();
+  		}
+	});
+});
+</textarea>
+<!--demo code end-->
+</div>
+<script type="text/javascript" src="../../js/jquery.js"></script>
+<script type="text/javascript">
+$(function() {
+	yepnope({
+  		load: '../../js/uilibs/overlay/overlay.js',
+  		callback: function (url, result, key) {
+			$("a[rel]").overlay();
+  		}
+	});
 });
 </script> 
- 
- 
- 
 </body> 
- 
 </html> 

@@ -1,153 +1,126 @@
-
- 
 <!DOCTYPE html> 
- 
 <html> 
- 
-<!--
-	This is a jQuery Tools standalone demo. Feel free to copy/paste.
-	                                                         
-	http://flowplayer.org/tools/demos/
-	
-	Do *not* reference CSS files and images from flowplayer.org when in production  
- 
-	Enjoy!
---> 
- 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
- 
-	<!-- include the Tools --> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	 
- 
-	<!-- standalone page styling (can be removed) --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
- 
- 
-	
-	<!-- tab styling --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/tabs.css" /> 
-	
-	
-	<!-- tab pane styling --> 
-	<style> 
-	div.wrap {
-		width:700px;
-		margin-bottom:40px;
-	}
-	
-	.wrap .pane  {	
-		background:#fff url(http://static.flowplayer.org/img/global/gradient/h150.png) repeat-x 0 20px;
-		display:none;		
-		padding:20px;
-		border:1px solid #999;
-		border-top:0;
-		font-size:14px;	 
-		font-size:18px;
-		color:#456;	
-		
-		_background-image:none;
-	}
-	
-	.wrap .pane p {
-		font-size:38px;	
-		margin:-10px 0 -20px 0;	
-		text-align:right;
-		color:#578;
-	}
-	</style> 
+	<title>多层tab demo</title> 
+	<script src="../../js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+<style> 
+.pane{padding:0 20px;}
+</style> 
 </head> 
  
 <body> 
- 
- 
- 
- 
-<div class="wrap"> 
-	<!-- the tabs --> 
-<ul class="tabs"> 
-	<li><a href="#">Tab 1</a></li> 
-	<li><a href="#">Tab 2</a></li> 
-	<li><a href="#">Tab 3</a></li> 
-</ul> 
- 
-<!-- tab "panes" --> 
-<div class="pane">First tab content.</div> 
-<div class="pane">Second tab content</div> 
-<div class="pane">Third tab content</div> 
-</div> 
- 
-<div class="wrap"> 
- 
-	<!-- the tabs --> 
+<div class="container">
+<div class="page-header">
+    <h1>选项卡嵌套</h1>
+</div>
 	<ul class="tabs"> 
 		<li><a href="#">Tab 1</a></li> 
 		<li><a href="#">Tab 2</a></li> 
 		<li><a href="#">Tab 3</a></li> 
 	</ul> 
- 
-	<!-- tab "panes" --> 
 	<div class="pane"> 
-		<p>#1</p> 
-		<!-- the tabs --> 
-<ul class="tabs"> 
-	<li><a href="#">Tab 1</a></li> 
-	<li><a href="#">Tab 2</a></li> 
-	<li><a href="#">Tab 3</a></li> 
-</ul> 
- 
-<!-- tab "panes" --> 
-<div class="pane">First tab content.</div> 
-<div class="pane">Second tab content</div> 
-<div class="pane">Third tab content</div> 
+		<p>大儿子</p> 
+		<ul class="tabs"> 
+			<li><a href="#">Tab 1</a></li> 
+			<li><a href="#">Tab 2</a></li> 
+			<li><a href="#">Tab 3</a></li> 
+		</ul> 
+		<div class="pane">老大的大儿子</div> 
+		<div class="pane">老大的二儿子</div> 
+		<div class="pane">老大的三儿子</div> 
 	</div> 
-	 
 	<div class="pane"> 
-		<p>#2</p> 
-		<!-- the tabs --> 
-<ul class="tabs"> 
-	<li><a href="#">Tab 1</a></li> 
-	<li><a href="#">Tab 2</a></li> 
-	<li><a href="#">Tab 3</a></li> 
-</ul> 
- 
-<!-- tab "panes" --> 
-<div class="pane">First tab content.</div> 
-<div class="pane">Second tab content</div> 
-<div class="pane">Third tab content</div> 
+		<p>二儿子</p> 
+		<ul class="tabs"> 
+			<li><a href="#">Tab 1</a></li> 
+			<li><a href="#">Tab 2</a></li> 
+			<li><a href="#">Tab 3</a></li> 
+		</ul> 
+		<div class="pane">老二的大儿子</div> 
+		<div class="pane">老二的二儿子</div> 
+		<div class="pane">老二的三儿子</div> 
 	</div> 
-	
 	<div class="pane"> 
-		<p>#3	</p> 
-		<!-- the tabs --> 
-<ul class="tabs"> 
-	<li><a href="#">Tab 1</a></li> 
-	<li><a href="#">Tab 2</a></li> 
-	<li><a href="#">Tab 3</a></li> 
-</ul> 
- 
-<!-- tab "panes" --> 
-<div class="pane">First tab content.</div> 
-<div class="pane">Second tab content</div> 
-<div class="pane">Third tab content</div> 
+		<p>三儿子</p> 
+		<ul class="tabs"> 
+			<li><a href="#">Tab 1</a></li> 
+			<li><a href="#">Tab 2</a></li> 
+			<li><a href="#">Tab 3</a></li> 
+		</ul> 
+		<div class="pane">老三的大儿子</div> 
+		<div class="pane">老三的二儿子</div> 
+		<div class="pane">老三的三儿子</div>  
 	</div> 
 	
-</div> 
- 
- 
- 
-<!-- This JavaScript snippet activates those tabs --> 
-<script> 
- 
-// perform JavaScript after the document is scriptable.
+
+ <!--demo code start-->
+ <h2>html</h2>
+ <textarea class="html">
+<ul class="tabs"> 
+		<li><a href="#">Tab 1</a></li> 
+		<li><a href="#">Tab 2</a></li> 
+		<li><a href="#">Tab 3</a></li> 
+	</ul> 
+	<div class="pane"> 
+		<p>大儿子</p> 
+		<ul class="tabs"> 
+			<li><a href="#">Tab 1</a></li> 
+			<li><a href="#">Tab 2</a></li> 
+			<li><a href="#">Tab 3</a></li> 
+		</ul> 
+		<div class="pane">老大的大儿子</div> 
+		<div class="pane">老大的二儿子</div> 
+		<div class="pane">老大的三儿子</div> 
+	</div> 
+	<div class="pane"> 
+		<p>二儿子</p> 
+		<ul class="tabs"> 
+			<li><a href="#">Tab 1</a></li> 
+			<li><a href="#">Tab 2</a></li> 
+			<li><a href="#">Tab 3</a></li> 
+		</ul> 
+		<div class="pane">老二的大儿子</div> 
+		<div class="pane">老二的二儿子</div> 
+		<div class="pane">老二的三儿子</div> 
+	</div> 
+	<div class="pane"> 
+		<p>三儿子</p> 
+		<ul class="tabs"> 
+			<li><a href="#">Tab 1</a></li> 
+			<li><a href="#">Tab 2</a></li> 
+			<li><a href="#">Tab 3</a></li> 
+		</ul> 
+		<div class="pane">老三的大儿子</div> 
+		<div class="pane">老三的二儿子</div> 
+		<div class="pane">老三的三儿子</div>  
+	</div> 
+</textarea>
+
+<h2>js</h2>
+<textarea class="js">
 $(function() {
-	$("ul.tabs").tabs("> .pane");
+	yepnope({
+  		load: alias.tabs,
+  		callback: function () {
+			$("ul.tabs").tabs("> .pane");
+  		}
+	});
+});
+</textarea>
+<!--demo code stop-->
+</div>
+<script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script type="text/javascript">
+$(function() {
+	yepnope({
+  		load: alias.tabs,
+  		callback: function () {
+			$("ul.tabs").tabs("> .pane");
+  		}
+	});
 });
 </script> 
- 
- 
- 
 </body> 
- 
 </html> 
