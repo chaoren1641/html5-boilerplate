@@ -214,7 +214,7 @@ window.Modernizr = (function(window,document,undefined){
     /**
      * Tests
      * -----
-     */
+     */ 
 
     tests['flexbox'] = function() {
         /**
@@ -1479,8 +1479,8 @@ var docElement            = doc.documentElement,
 } )( this, this.document );
 
 /* 
-usage: log('inside coolFunc', this, arguments);
-paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog
+*usage: log('inside coolFunc', this, arguments);
+*paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog
 */
 window.log = function(){
   log.history = log.history || [];   // store logs to an array for reference
@@ -1497,7 +1497,7 @@ window.log = function(){
 {console.log();return window.console;}catch(err){return window.console={};}})());
 
 /*
-解决ie6下不支持背景缓存
+*解决ie6下不支持背景缓存
 */
 if (!+'\v1' && !('maxHeight' in document.body.style)) {
 	try{ 
@@ -1507,21 +1507,46 @@ if (!+'\v1' && !('maxHeight' in document.body.style)) {
 
 
 /*
-全局js路由
+*全局js路由
 */
 (function(win){
 	var root = '/github/phpwind-front-end/js/',
+	ver = '8.7beta',
 	alias = {
     	'tabs': 'uilibs/tabs/tabs',
     	'tabs-slideshow': 'uilibs/tabs/tabs.slideshow',
+    	
     	'overlay': 'uilibs/overlay/overlay',
-    	'overlay-apple': 'uilibs/overlay/overlay.apple'
-     };
+    	'overlay-apple': 'uilibs/overlay/overlay.apple',
+    	
+    	'dateinput': 'uilibs/dateinput/dateinput',
+    	
+    	'chosen': 'uilibs/chosen/chosen',
+    	
+    	'rangeinput': 'uilibs/rangeinput/rangeinput',
+    	
+    	'scrollable': 'uilibs/scrollable/scrollable',
+    	'scrollable-autoscroll': 'uilibs/scrollable/scrollable.autoscroll',
+    	'scrollable-navigator': 'uilibs/scrollable/scrollable.navigator',
+  
+    	'tooltip': 'uilibs/tooltip/tooltip',
+    	'tooltip-slide': 'uilibs/tooltip/tooltip.slide',
+    	'tooltip-dynamic': 'uilibs/tooltip/tooltip.dynamic',
+   	},
+	alias_css = {
+		'chosen':'uilibs/chosen/chosen'
+	};
 	for(var i in alias){
 		if (alias.hasOwnProperty(i)) {
-  			alias[i] = root + alias[i] +'.js?v=8.7beta1';
-  		}
+			alias[i] = root + alias[i] +'.js?v='+ver;
+		}
+	}
+	for(var i in alias_css){
+		if (alias_css.hasOwnProperty(i)) {
+			alias_css[i] = 'css!' + root + alias_css[i] +'.css?v='+ver;
+		}
 	}
 	win.alias = alias;
+	win.alias_css = alias_css;
 })(this);
 
