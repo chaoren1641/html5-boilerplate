@@ -657,7 +657,6 @@ input[type=checkbox], input[type=radio] {
 }
 input,
 textarea,
-select,
 .uneditable-input {
   display: inline-block;
   width: 210px;
@@ -696,7 +695,7 @@ input[type=button], input[type=reset], input[type=submit] {
   width: auto;
   height: auto;
 }
-select, input[type=file] {
+input[type=file] {
   height: 27px;
   line-height: 27px;
 }
@@ -1788,12 +1787,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   z-index: 1000;
 }
 .modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
   z-index: 2000;
   width: 560px;
-  margin: -280px 0 0 -250px;
   background-color: #ffffff;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);

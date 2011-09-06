@@ -15,7 +15,6 @@
 <div class="page-header">
     <h1>弹出窗口</h1>
 </div>
-<a href="#" class="btn" rel="#pop1">点击我试试</a>
 <div class="modal" id="pop1" style="position: relative; display:none;">
 	<div class="modal-header">
 		<h3>Modal Heading</h3>
@@ -33,7 +32,6 @@
  <!--demo code start-->
  <h2>html</h2>
  <textarea class="html">
-<a href="#" class="btn" rel="#pop1">点击我试试</a>
 <div class="modal" id="pop1" style="display:none;">
 	<div class="modal-header">
 		<h3>弹出层</h3>
@@ -51,26 +49,26 @@
 
 <h2>js</h2>
 <textarea class="js">
-$(function() {
-	yepnope({
-  		load: '../../js/uilibs/overlay/overlay.js',
-  		callback: function (url, result, key) {
-			$("a[rel]").overlay();
-  		}
-	});
+yepnope({
+	load: '../../js/uilibs/overlay/overlay.js',
+	callback: function (url, result, key) {
+		$("#pop1").overlay({
+			load: true
+		});
+	}
 });
 </textarea>
 <!--demo code end-->
 </div>
 <script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
 <script>
-$(function() {
-	yepnope({
-  		load: alias.overlay,
-  		callback: function (url, result, key) {
-			$("a[rel]").overlay();
-  		}
-	});
+yepnope({
+	load: '../../js/uilibs/overlay/overlay.js',
+	callback: function (url, result, key) {
+		$("#pop1").overlay({
+			load: true
+		});
+	}
 });
 </script> 
 </body> 

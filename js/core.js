@@ -6,7 +6,6 @@
  * Dual-licensed under the BSD or MIT licenses.
  * http://www.modernizr.com/license/
  */
-
 window.Modernizr = (function(window,document,undefined){
     
     var version = '1.7',
@@ -1478,9 +1477,26 @@ var docElement            = doc.documentElement,
 
 } )( this, this.document );
 
-/* 
-*usage: log('inside coolFunc', this, arguments);
-*paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog
+/*
+*******************
+***** Yepnope CSS Force prefix
+*******************
+*/
+( function ( yepnope ) {
+  // add each prefix
+  yepnope.addPrefix( 'css', function ( resource ) {
+    // Set the force flag
+    resource.forceCSS = true;
+    //carry on
+    return resource;
+  } );
+} )( this.yepnope );
+
+/*
+*******************
+***** usage: log('inside coolFunc', this, arguments);
+***** paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog
+*******************
 */
 window.log = function(){
   log.history = log.history || [];   // store logs to an array for reference
@@ -1514,10 +1530,10 @@ if (!+'\v1' && !('maxHeight' in document.body.style)) {
 	ver = '8.7beta',
 	alias = {
     	'tabs': 'uilibs/tabs/tabs',
-    	'tabs-slideshow': 'uilibs/tabs/tabs.slideshow',
+    	'tabs_slideshow': 'uilibs/tabs/tabs.slideshow',
     	
     	'overlay': 'uilibs/overlay/overlay',
-    	'overlay-apple': 'uilibs/overlay/overlay.apple',
+    	'overlay_apple': 'uilibs/overlay/overlay.apple',
     	
     	'dateinput': 'uilibs/dateinput/dateinput',
     	
@@ -1530,8 +1546,12 @@ if (!+'\v1' && !('maxHeight' in document.body.style)) {
     	'scrollable-navigator': 'uilibs/scrollable/scrollable.navigator',
   
     	'tooltip': 'uilibs/tooltip/tooltip',
-    	'tooltip-slide': 'uilibs/tooltip/tooltip.slide',
-    	'tooltip-dynamic': 'uilibs/tooltip/tooltip.dynamic',
+    	'tooltip_slide': 'uilibs/tooltip/tooltip.slide',
+    	'tooltip_dynamic': 'uilibs/tooltip/tooltip.dynamic',
+    	
+    	'expose':'uilibs/toolbox/expose',
+    	'flashembed':'uilibs/toolbox/flashembed',
+    	'mousewheel':'uilibs/toolbox/mousewheel'
    	},
 	alias_css = {
 		'chosen':'uilibs/chosen/chosen'

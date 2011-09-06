@@ -1229,12 +1229,30 @@
       </ul>
     </div>
 
-    <h2>使用方法</h2>
-    <ol>
-      <li>下载并引用插件</li>
-      <li>选择下拉框并初始化: <code>$(".chzn-select").chosen()</code></li>
-    </ol>
-    
+    <h1>使用方法</h1>
+    <h2>html</h2>
+    <textarea class="html">
+    	<select data-placeholder="Your Favorite Types of Bear" style="width:350px;" multiple class="chzn-select  chzn-rtl" tabindex="10">
+          <option value=""></option>
+          <option>American Black Bear</option>
+          <option>Asiatic Black Bear</option>
+          <option>Brown Bear</option>
+          <option>Giant Panda</option>
+          <option selected>Sloth Bear</option>
+          <option selected>Polar Bear</option>
+        </select>
+    </textarea>
+    <h2>js</h2>
+	<textarea class="js">
+		$(function() {
+		yepnope({
+	  		load: [alias.chosen,alias_css.chosen],
+	  		callback: function (url, result, key) {
+				$(".chzn-select").chosen();
+	  		}
+		});
+	});
+	</textarea>
   </div>
 <script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
 <script type="text/javascript">
@@ -1247,16 +1265,4 @@ $(function() {
 	});
 });
 </script>
-<p></p>
-<h2>js</h2>
-<textarea class="js">
-	$(function() {
-	yepnope({
-  		load: [alias.chosen,alias_css.chosen],
-  		callback: function (url, result, key) {
-			$(".chzn-select").chosen();
-  		}
-	});
-});
-</textarea>
 </body>
