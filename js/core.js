@@ -1523,7 +1523,7 @@ if (!+'\v1' && !('maxHeight' in document.body.style)) {
 
 
 /*
-*全局js路由
+*全局常用js、css路由
 */
 (function(win){
 	var root = '/github/phpwind-front-end/js/',
@@ -1552,6 +1552,9 @@ if (!+'\v1' && !('maxHeight' in document.body.style)) {
     	'expose':'uilibs/toolbox/expose',
     	'flashembed':'uilibs/toolbox/flashembed',
     	'mousewheel':'uilibs/toolbox/mousewheel'
+    	
+    	'validate':'utils/jquery.validate',
+    	'form':'utils/jquery.form'
    	},
 	alias_css = {
 		'chosen':'uilibs/chosen/chosen'
