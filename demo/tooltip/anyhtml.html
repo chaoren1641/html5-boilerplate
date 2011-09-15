@@ -1,40 +1,13 @@
-
- 
- 
- 
 <!DOCTYPE html> 
- 
 <html> 
- 
-<!--
-	This is a jQuery Tools standalone demo. Feel free to copy/paste.
-	                                                         
-	http://flowplayer.org/tools/demos/
-	
-	Do *not* reference CSS files and images from flowplayer.org when in production  
- 
-	Enjoy!
---> 
- 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
- 
-	<!-- include the Tools --> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	 
- 
-	<!-- standalone page styling (can be removed) --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
- 
- 
+	<title>标准tab demo</title> 
+	<script src="../../js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
+<!-- tooltip styling --> 
 <style> 
- 
-body {
-	margin:200px;
-}	
- 
- 
- 
 /* trigger button */
 #download_now {
 	background:transparent url(../img/download.png) no-repeat scroll 0 0;
@@ -46,17 +19,17 @@ body {
 	width:159px;
 	cursor:pointer;
 }
- 
+
 /* mouseover state */
 #download_now:hover {
 	background-position:0 -44px ;		
 }
- 
+
 /* clicked state */
 #download_now:focus {
 	background-position:0 -88px;
 }
- 
+
 /* tooltip styling */
 .tooltip {
 	display:none;
@@ -67,13 +40,13 @@ body {
 	font-size:11px;
 	color:#fff;
 }
- 
+
 /* a .label element inside tooltip */
 .tooltip .label {
 	color:yellow;
 	width:35px;
 }
- 
+
 .tooltip a {
 	color:#ad4;
 	font-size:11px;
@@ -83,47 +56,90 @@ body {
 </head> 
  
 <body> 
- 
- 
- 
-<!-- trigger element. a regular workable link --> 
-<a id="download_now">Download now</a> 
- 
-<!-- tooltip element --> 
-<div class="tooltip"> 
- 
+<div class="container">
+<div class="page-header" style="margin-bottom: 200px;">
+    <h1>HTML提示功能</h1>
+</div>
+<!-- 触发提示的元素 -->
+<a id="download_now">Download now</a>
+
+<!-- 要提示的HTML -->
+<div class="tooltip">
 	<img src="http://static.flowplayer.org/img/title/eye.png" alt="Flying screens" 
-		style="float:left;margin:0 15px 20px 0" /> 
- 
-	<table style="margin:0"> 
-		<tr> 
-			<td class="label">File</td> 
-			<td>flowplayer-3.2.7.zip</td> 
-		</tr> 
-		<tr> 
-			<td class="label">Date</td> 
-			<td>2011-03-03</td> 
-		</tr> 
-		<tr> 
-			<td class="label">Size</td> 
-			<td>112 kB</td> 
-		</tr> 
-		<tr> 
-			<td class="label">OS</td> 
-			<td>all</td> 
+		style="float:left;"/>
+	<table style="margin:0">
+		<tr>
+			<td class="label">File</td>
+			<td>flowplayer-3.2.7.zip</td>
+		</tr>
+		<tr>
+			<td class="label">Date</td>
+			<td>2011-03-03</td>
+		</tr>
+		<tr>
+			<td class="label">Size</td>
+			<td>112 kB</td>
+		</tr>
+		<tr>
+			<td class="label">OS</td>
+			<td>all</td>
 		</tr>		
-	</table> 
- 
-	<a href="/3.2/">What's new in 3.2</a> 
-</div> 
- 
-<script> 
-// What is $(document).ready ? See: http://flowplayer.org/tools/documentation/basics.html#document_ready
-$(document).ready(function() {
- 
-$("#download_now").tooltip({ effect: 'slide'});
+	</table>
+	<a href="/3.2/">What's new in 3.2</a>
+</div>
+
+ <!--demo code start-->
+<h2>html</h2>
+<pre class="prettyprint linenums">
+&lt;!-- 触发提示的元素 --&gt;
+&lt;a id=&quot;download_now&quot;&gt;Download now&lt;/a&gt;
+
+&lt;!-- 要提示的HTML --&gt;
+&lt;div class=&quot;tooltip&quot;&gt;
+	&lt;img src=&quot;http://static.flowplayer.org/img/title/eye.png&quot; alt=&quot;Flying screens&quot; 
+		style=&quot;float:left;&quot;/&gt;
+	&lt;table style=&quot;margin:0&quot;&gt;
+		&lt;tr&gt;
+			&lt;td class=&quot;label&quot;&gt;File&lt;/td&gt;
+			&lt;td&gt;flowplayer-3.2.7.zip&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td class=&quot;label&quot;&gt;Date&lt;/td&gt;
+			&lt;td&gt;2011-03-03&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td class=&quot;label&quot;&gt;Size&lt;/td&gt;
+			&lt;td&gt;112 kB&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;tr&gt;
+			&lt;td class=&quot;label&quot;&gt;OS&lt;/td&gt;
+			&lt;td&gt;all&lt;/td&gt;
+		&lt;/tr&gt;		
+	&lt;/table&gt;
+	&lt;a href=&quot;/3.2/&quot;&gt;What's new in 3.2&lt;/a&gt;
+&lt;/div&gt;
+</pre>
+
+<h2>js</h2>
+<pre class="prettyprint linenums">
+yepnope({
+	load: [alias.tooltip,alias.tooltip_slide],
+	complete: function (url, result, key) {
+		$("#download_now").tooltip({ effect: 'slide'});
+	}
+});
+</pre>
+<!--demo code end-->
+</div>
+<script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
+<script>
+yepnope({
+	load: [alias.tooltip,alias.tooltip_slide],
+	complete: function (url, result, key) {
+		$("#download_now").tooltip({ effect: 'slide'});
+	}
 });
 </script> 
 </body> 
- 
 </html> 

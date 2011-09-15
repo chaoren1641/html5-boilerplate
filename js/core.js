@@ -1551,7 +1551,7 @@ if (!+'\v1' && !('maxHeight' in document.body.style)) {
     	
     	'expose':'uilibs/toolbox/expose',
     	'flashembed':'uilibs/toolbox/flashembed',
-    	'mousewheel':'uilibs/toolbox/mousewheel'
+    	'mousewheel':'uilibs/toolbox/mousewheel',
     	
     	'validate':'utils/jquery.validate',
     	'form':'utils/jquery.form'

@@ -1,48 +1,24 @@
-
- 
 <!DOCTYPE html> 
- 
 <html> 
- 
-<!--
-	This is a jQuery Tools standalone demo. Feel free to copy/paste.
-	                                                         
-	http://flowplayer.org/tools/demos/
-	
-	Do *not* reference CSS files and images from flowplayer.org when in production  
- 
-	Enjoy!
---> 
- 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
- 
-	<!-- include the Tools --> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	 
- 
-	<!-- standalone page styling (can be removed) --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
- 
- 
+	<title>标准tab demo</title> 
+	<script src="../../js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
 	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/scrollable-horizontal.css" /> 
 	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/scrollable-buttons.css" /> 
 </head> 
  
 <body> 
- 
-<!-- HTML structures --> 
- 
- 
-<!-- "previous page" action --> 
+<div class="container">
+<div class="page-header">
+    <h1>图片滚动</h1>
+</div>
+<!-- 上一页按钮 --> 
 <a class="prev browse left"></a> 
- 
-<!-- root element for scrollable --> 
 <div class="scrollable">   
-   
-   <!-- root element for the items --> 
    <div class="items"> 
-   
       <!-- 1-5 --> 
       <div> 
          <img src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg" /> 
@@ -51,7 +27,6 @@
          <img src="http://farm1.static.flickr.com/28/66523124_b468cf4978_t.jpg" /> 
          <img src="http://farm1.static.flickr.com/164/399223606_b875ddf797_t.jpg" /> 
       </div> 
-      
       <!-- 5-10 --> 
       <div> 
          <img src="http://farm1.static.flickr.com/163/399223609_db47d35b7c_t.jpg" /> 
@@ -60,7 +35,6 @@
          <img src="http://farm1.static.flickr.com/153/399232237_6928a527c1_t.jpg" /> 
          <img src="http://farm1.static.flickr.com/50/117346182_1fded507fa_t.jpg" /> 
       </div> 
-      
       <!-- 10-15 --> 
       <div> 
          <img src="http://farm4.static.flickr.com/3629/3323896446_3b87a8bf75_t.jpg" /> 
@@ -69,30 +43,50 @@
          <img src="http://farm4.static.flickr.com/3635/3323893254_3183671257_t.jpg" /> 
          <img src="http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg" /> 
       </div> 
-      
    </div> 
-   
 </div> 
- 
-<!-- "next page" action --> 
+<!-- 下一页按钮 --> 
 <a class="next browse right"></a> 
+
+ <br style="clear:both;"/>
+ <!--demo code start-->
+ <h2>html</h2>
+<pre class="prettyprint linenums">
+&lt;div id=&quot;demo&quot;&gt; 
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/1.jpg&quot;
+		title=&quot;A must have tool for designing better layouts and more intuitive user-interfaces.&quot;/&gt; 
  
-<br clear="all" /> 
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/2.jpg&quot;
+		title=&quot;Tooltips can be positioned anywhere relative to the trigger element.&quot;/&gt; 
  
-<!-- javascript coding --> 
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/3.jpg&quot;
+		title=&quot;Tooltips can contain any HTML such as links, images, forms, tables, etc.&quot;/&gt; 
  
- 
-<script> 
-// execute your scripts when the DOM is ready. this is mostly a good habit
-$(function() {
- 
-	// initialize scrollable
-	$(".scrollable").scrollable();
- 
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/4.jpg&quot; style=&quot;margin-right:0px&quot;
+		title=&quot;There are many built-in show/hide effects and you can also make your own.&quot;/&gt; 
+&lt;/div&gt;
+</pre>
+
+<h2>js</h2>
+<pre class="prettyprint linenums">
+yepnope({
+	load: alias.scrollable,
+	callback: function (url, result, key) {
+		$(".scrollable").scrollable();
+	}
+});
+</pre>
+<!--demo code end-->
+</div>
+<script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
+<script>
+yepnope({
+	load: alias.scrollable,
+	callback: function (url, result, key) {
+		$(".scrollable").scrollable();
+	}
 });
 </script> 
- 
- 
 </body> 
- 
 </html> 

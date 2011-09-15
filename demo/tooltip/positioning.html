@@ -1,54 +1,36 @@
-
- 
- 
- 
- 
- 
- 
- 
 <!DOCTYPE html> 
- 
 <html> 
- 
-<!--
-	This is a jQuery Tools standalone demo. Feel free to copy/paste.
-	                                                         
-	http://flowplayer.org/tools/demos/
-	
-	Do *not* reference CSS files and images from flowplayer.org when in production  
- 
-	Enjoy!
---> 
- 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
- 
-	<!-- include the Tools --> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	 
- 
-	<!-- standalone page styling (can be removed) --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
- 
- 
- 
- 
+	<title>标准tab demo</title> 
+	<script src="../../js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
 <!-- tooltip styling --> 
 <style> 
  
-/* tooltip styling. by default the element to be styled is .tooltip  */
 .tooltip {
 	display:none;
-	background:transparent url(/tools/img/tooltip/black_arrow.png);
+	background:transparent url(../img/black_arrow.png);
 	font-size:12px;
 	height:70px;
 	width:160px;
 	padding:25px;
 	color:#fff;	
 }
- 
-/* style the trigger elements */
-#dyna img {
+.tooltip.bottom {
+	background:url(../img/black_arrow_bottom.png);
+	padding-top:40px;
+	height:55px;
+}
+
+.tooltip.bottom {
+	background:url(../img/black_arrow_bottom.png);
+}
+#demo {
+	margin-top: 100px;
+}
+#demo img {
 	border:0;
 	cursor:pointer;
 	margin:0 8px;
@@ -57,20 +39,11 @@
 </head> 
  
 <body> 
- 
- 
- 
-<!-- use gif image for IE --> 
-<!--[if lt IE 7]>
-<style>
-.tooltip {
-	background-image:url(/tools/img/tooltip/black_arrow.gif);
-}
-</style>
-<![endif]--> 
- 
-<!-- a couple of trigger elements --> 
-<div id="dyna"> 
+<div class="container">
+<div class="page-header">
+    <h1>基本提示功能</h1>
+</div>
+<div id="demo"> 
 	<img src="http://static.flowplayer.org/tools/img/photos/1.jpg"
 		title="A must have tool for designing better layouts and more intuitive user-interfaces."/> 
  
@@ -83,55 +56,51 @@
 	<img src="http://static.flowplayer.org/tools/img/photos/4.jpg" style="margin-right:0px"
 		title="There are many built-in show/hide effects and you can also make your own."/> 
 </div> 
+
+ <!--demo code start-->
+ <h2>html</h2>
+<pre class="prettyprint linenums">
+&lt;div id=&quot;demo&quot;&gt; 
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/1.jpg&quot;
+		title=&quot;A must have tool for designing better layouts and more intuitive user-interfaces.&quot;/&gt; 
  
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/2.jpg&quot;
+		title=&quot;Tooltips can be positioned anywhere relative to the trigger element.&quot;/&gt; 
  
-<script> 
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/3.jpg&quot;
+		title=&quot;Tooltips can contain any HTML such as links, images, forms, tables, etc.&quot;/&gt; 
  
-// initialize tooltip
-$("#dyna img[title]").tooltip({
- 
-   // tweak the position
-   offset: [10, 2],
- 
-   // use the "slide" effect
-   effect: 'slide'
- 
-// add dynamic plugin with optional configuration for bottom edge
-}).dynamic({ bottom: { direction: 'down', bounce: true } });
+	&lt;img src=&quot;http://static.flowplayer.org/tools/img/photos/4.jpg&quot; style=&quot;margin-right:0px&quot;
+		title=&quot;There are many built-in show/hide effects and you can also make your own.&quot;/&gt; 
+&lt;/div&gt;
+</pre>
+
+<h2>js</h2>
+<pre class="prettyprint linenums">
+yepnope({
+	load: [alias.tooltip,alias.tooltip_dynamic],
+	complete: function (url, result, key) {
+		$("#dyna img[title]").tooltip({
+		   offset: [10, 2],
+		   effect: 'slide'
+		}).dynamic({ bottom: { direction: 'down', bounce: true } });
+	}
+});
+</pre>
+<!--demo code end-->
+</div>
+<script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
+<script>
+yepnope({
+	load: [alias.tooltip,alias.tooltip_dynamic],
+	complete: function (url, result, key) {
+		$("#dyna img[title]").tooltip({
+		   offset: [10, 2],
+		   effect: 'slide'
+		}).dynamic({ bottom: { direction: 'down', bounce: true } });
+	}
+});
 </script> 
- 
- 
- 
- 
- 
-<style> 
- 
-/* override the arrow image of the tooltip */
-.tooltip.bottom {
-	background:url(../img/black_arrow_bottom.png);
-	padding-top:40px;
-	height:55px;
-}
- 
-.tooltip.bottom {
-	background:url(../img/black_arrow_bottom.png);
-}
-</style> 
- 
- 
- 
-<!-- use gif image for IE --> 
-<!--[if lt IE 7]>
-<style>
-.tooltip {
-	background-image:url(../img/tooltip/black_arrow.gif);
-}
- 
-.tooltip.bottom {
-	background:url(../img/black_arrow_bottom.gif);
-}
-</style>
-<![endif]--> 
 </body> 
- 
 </html> 

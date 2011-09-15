@@ -2,9 +2,10 @@
 <html> 
 <head> 
 	<title>标准tab demo</title> 
-	<script src="../../js/core.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
 	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
+	<script src="../../js/core.js"></script>
 <style> 
 
 </style> 
@@ -16,7 +17,7 @@
     <h1>弹出窗口</h1>
 </div>
 <a href="#" class="btn" rel="#pop1">点击我试试</a>
-<div class="modal" id="pop1" style="position: relative; display:none;">
+<div class="modal" id="pop1" style="display:none;">
 	<div class="modal-header">
 		<h3>Modal Heading</h3>
 		<a href="#" class="close">×</a>
@@ -27,50 +28,45 @@
 		<p>高度自适应哦</p>
 		<p>高度自适应哦</p>
 	</div>
-	
  </div>
 
  <!--demo code start-->
  <h2>html</h2>
- <textarea class="html">
-<a href="#" class="btn" rel="#pop1">点击我试试</a>
-<div class="modal" id="pop1" style="display:none;">
-	<div class="modal-header">
-		<h3>弹出层</h3>
-		<a href="#" class="close">×</a>
-	</div>
-	<div class="modal-body">
-		<p>内容</p>
-	</div>
-	<div class="modal-footer">
-		<a href="#" class="btn primary">Primary</a>
-		<a href="#" class="btn secondary">Secondary</a>
-	</div>
- </div>
-</textarea>
+<pre class="prettyprint linenums">
+&lt;a href=&quot;#&quot; class=&quot;btn&quot; rel=&quot;#pop1&quot;&gt;点击我试试&lt;/a&gt;
+&lt;div class=&quot;modal&quot; id=&quot;pop1&quot; style=&quot;display:none;&quot;&gt;
+	&lt;div class=&quot;modal-header&quot;&gt;
+		&lt;h3&gt;Modal Heading&lt;/h3&gt;
+		&lt;a href=&quot;#&quot; class=&quot;close&quot;&gt;&#215;&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;modal-body&quot;&gt;
+		&lt;p&gt;内容内容内容内容&lt;/p&gt;
+		&lt;p&gt;高度自适应哦&lt;/p&gt;
+		&lt;p&gt;高度自适应哦&lt;/p&gt;
+		&lt;p&gt;高度自适应哦&lt;/p&gt;
+	&lt;/div&gt;
+ &lt;/div&gt;
+</pre>
 
 <h2>js</h2>
-<textarea class="js">
-$(function() {
-	yepnope({
-  		load: '../../js/uilibs/overlay/overlay.js',
-  		callback: function (url, result, key) {
-			$("a[rel]").overlay();
-  		}
-	});
+<pre class="prettyprint linenums">
+yepnope({
+	load: alias.overlay,
+	callback: function (url, result, key) {
+		$("a[rel]").overlay();
+	}
 });
-</textarea>
+</pre>
 <!--demo code end-->
 </div>
 <script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
 <script>
-$(function() {
-	yepnope({
-  		load: alias.overlay,
-  		callback: function (url, result, key) {
-			$("a[rel]").overlay();
-  		}
-	});
+yepnope({
+	load: alias.overlay,
+	callback: function (url, result, key) {
+		$("a[rel]").overlay();
+	}
 });
 </script> 
 </body> 

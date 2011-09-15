@@ -1,89 +1,87 @@
-
- 
 <!DOCTYPE html> 
- 
 <html> 
- 
-<!--
-	This is a jQuery Tools standalone demo. Feel free to copy/paste.
-	                                                         
-	http://flowplayer.org/tools/demos/
-	
-	Do *not* reference CSS files and images from flowplayer.org when in production  
- 
-	Enjoy!
---> 
- 
 <head> 
-	<title>jQuery Tools standalone demo</title> 
- 
-	<!-- include the Tools --> 
-	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script> 
-	 
- 
-	<!-- standalone page styling (can be removed) --> 
-	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/standalone.css"/>	
- 
- 
-	<!-- accordion styling -->	
+	<title>标准tab demo</title> 
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
+	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
 	<link rel="stylesheet" type="text/css" href="http://static.flowplayer.org/tools/css/tabs-accordion.css"/> 
- 
+	<script src="../../js/core.js"></script>
 </head> 
  
-<body> 	
- 
+<body> 
+<div class="container">
+<div class="page-header">
+    <h1>手风琴效果</h1>
+</div>
 <!-- accordion --> 
 <div id="accordion"> 
- 
 	<h2 class="current">First pane</h2> 
-	 
 	<div class="pane" style="display:block"> 
-	
-		<img src="http://static.flowplayer.org/img/title/javascript24.png" alt="JavaScript tools" style="float:left; margin:0 15px 15px 0" /> 
-		
 		<h3>Lorem ipsum dolor</h3> 
-		
 		<p> 
-			<strong>Fusce semper, nisi nec pellentesque sollicitudin.</strong> 
 		</p> 
-		
-		<p style="clear:both"> 
-			Consectetur adipiscing elit. Praesent bibendum eros ac nulla. Integer vel lacus ac neque viverra ornare. Nulla id massa nec erat laoreet elementum. Vivamus tristique auctor odio. Integer mi neque.
-		</p> 
-		
-		
 	</div> 
-	
 	<h2>Second pane</h2> 
-	
 	<div class="pane"> 
 		<h3>Vestibulum ante ipsum</h3> 
-		
 		<p> 
-			Cras diam. Donec dolor lacus, vestibulum at, varius in, mollis id, dolor. Aliquam erat volutpat. Praesent pretium tristique est. Maecenas nunc lorem, blandit nec, accumsan nec, facilisis quis, pede. Aliquam erat volutpat. Donec sit amet urna quis nisi elementum fermentum.
 		</p> 
 	</div> 
- 
-	<h2>Third pane</h2> 
-	
+ 	<h2>Third pane</h2> 
 	<div class="pane"> 
 		<h3>Curabitur vel dolor</h3> 
-		
 		<p> 
-			Non lectus lacinia egestas. Nulla hendrerit, felis quis elementum viverra, purus felis egestas magna, non vulputate libero justo nec sem. Nullam arcu. Donec pellentesque vestibulum urna. In mauris odio, fringilla commodo, commodo ac, dignissim ac, augue.
 		</p> 
 	</div>	
- 
-</div> 
- 
-<!-- activate tabs with JavaScript --> 
-<script> 
-$(function() { 
- 
-$("#accordion").tabs("#accordion div.pane", {tabs: 'h2', effect: 'slide', initialIndex: null});
+</div>
+
+
+ <!--demo code start-->
+ <h2>html</h2>
+ <pre class="prettyprint linenums">
+&lt;div id=&quot;accordion&quot;&gt; 
+	&lt;h2 class=&quot;current&quot;&gt;First pane&lt;/h2&gt; 
+	&lt;div class=&quot;pane&quot; style=&quot;display:block&quot;&gt; 
+		&lt;h3&gt;Lorem ipsum dolor&lt;/h3&gt; 
+		&lt;p&gt; 
+		&lt;/p&gt; 
+	&lt;/div&gt; 
+	&lt;h2&gt;Second pane&lt;/h2&gt; 
+	&lt;div class=&quot;pane&quot;&gt; 
+		&lt;h3&gt;Vestibulum ante ipsum&lt;/h3&gt; 
+		&lt;p&gt; 
+		&lt;/p&gt; 
+	&lt;/div&gt; 
+ 	&lt;h2&gt;Third pane&lt;/h2&gt; 
+	&lt;div class=&quot;pane&quot;&gt; 
+		&lt;h3&gt;Curabitur vel dolor&lt;/h3&gt; 
+		&lt;p&gt; 
+		&lt;/p&gt; 
+	&lt;/div&gt;	
+&lt;/div&gt;
+</pre>
+
+<h2>js</h2>
+<pre class="prettyprint linenums">
+yepnope({
+	load: alias.tabs,
+	callback: function (url, result, key) {
+		$("ul.tabs").tabs("div.panes > div");
+	}
+});
+</pre>
+<!--demo code stop-->
+</div>
+<script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
+<script type="text/javascript">
+yepnope({
+	load: alias.tabs,
+	callback: function (url, result, key) {
+		$("#accordion").tabs("#accordion div.pane", {tabs: 'h2', effect: 'slide', initialIndex: null});
+	}
 });
 </script> 
- 
 </body> 
- 
 </html> 

@@ -1,26 +1,72 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>jQuery Tools standalone demo</title>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="css/docs.css" />
-		<base target="_blank" />
-	</head>
-	<body>
-		<div class="masthead">
-			<div class="inner">
-				<div class="container">
-					<h1>phpwind ui tools</h1>
-					<p class="lead">
-						此文档为下一版前端ui准备，由于样式借用了<a href="http://twitter.github.com/bootstrap/">twitter bootstrap.css</a>，所以不兼容ie6，请使用非IE6浏览器
-					</p>
-					<p>
-						整个前端架构组成：core.js，里面包含了<a href="http://modernizr.com">Modernizr</a>与<a href="http://yepnopejs.com">yepnope.js</a>
-					</p>
-					<h3>并非所有的功能都会有Demo，如果没有demo，请自行打开相关js文件，在头部基本上都会有来源地址，来源地址中通常会有相关demo</h3>
-					<h3>所有的代码都托管在Github上，可以在Github上<a href="https://github.com/chaoren1641/html5-boilerplate" target="_blank">查看所有源代码与示例源文件</a></h3>
-				</div><!-- /container -->
-			</div>
+<head>
+	<title>jQuery Tools standalone demo</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="assets/google-code-prettify/prettify.css" />
+	<base target="_blank" />
+</head>
+<body>
+	<div class="masthead">
+		<div class="inner">
+			<div class="container">
+				<h1>前端架构之js使用与插件DEMO</h1>
+				<h2>简介</h2>
+				<p class="lead">
+					此文档为下一版前端ui准备，由于样式借用了<a href="http://twitter.github.com/bootstrap/">twitter bootstrap.css</a>，所以不兼容ie6，请使用非IE6浏览器
+				</p>
+				<p>
+					整个前端架构组成：core.js，里面包含了<a href="http://modernizr.com">Modernizr</a>与<a href="http://yepnopejs.com">yepnope.js</a>和所有页面公共js代码<br/>
+				</p>
+				
+				<h2>如何使用</h2>
+				<p>一个网页面一般情况下只包含两个js文件，示例如下：</p>
+				<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+	&lt;title&gt;&lt;/title&gt;
+	&lt;meta charset=&quot;gbk&quot;&gt;
+	&lt;!--加载核心脚本，里面包含了Modernizr与yepnope.js，还包含了每个页面共用的一些js代码，应当尽量精简之--&gt;
+	&lt;script src=&quot;js/core.js&quot;&gt;&lt;/script&gt;
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/xxx.css&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;!--HTML代码开始--&gt;
+	&lt;div&gt;
+		.........
+	&lt;/div&gt;
+	&lt;!--HTML代码结束--&gt;
+	&lt;!--由于jQuery几乎每个页面都会要用到，所以没有必要做按需加载，这里直接在页面最底部引入之--&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-1.6.3.js&quot;&gt;&lt;/script&gt;
+	&lt;script&gt;
+	//你的业务逻辑脚本
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h2></h2>
+<p>
+别名机制：几乎所有的UI组件，在core.js里都定义了一个别名，不需要在每个页面中引入它的具体路径，我们都通过异步动态加载需要的UI和功能组件，比如我要使用tab功能，代码如下：
+<pre class="prettyprint linenums">
+yepnope({
+	load: alias.tabs,//引入tabs组件js文件
+	callback: function (url, result, key) {
+		$("ul.tabs").tabs("div.panes > div");//加载完成之后执行业务代码
+	}
+});
+</pre>
+				</p>
+
+<h2>补充说明</h2>
+				<p>并非所有的功能都会有Demo，如果没有demo，请自行打开相关js文件，在头部基本上都会有来源地址，来源地址中通常会有相关demo</p>
+				<p>所有的代码都托管在Github上，可以在Github上<a href="https://github.com/chaoren1641/html5-boilerplate" target="_blank">查看所有源代码与示例源文件</a></p>
+			</div><!-- /container -->
 		</div>
-	</body>
+	</div>
+<script type="text/javascript" src="../js/jquery-1.6.3.js"></script>
+<script src="assets/google-code-prettify/prettify.js"></script>
+</body>
 </html>

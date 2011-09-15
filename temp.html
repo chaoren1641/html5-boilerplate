@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title></title>
+	<meta charset="gbk">
+	<!--加载核心脚本，里面包含了Modernizr与yepnope.js，还包含了每个页面共用的一些js代码，应当尽量精简之-->
+	<script src="js/core.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/xxx.css" />
+</head>
+<body>
+	<!--HTML代码开始-->
+	<div>
+		.........
+	</div>
+	<!--HTML代码结束-->
+	<!--由于jQuery几乎每个页面都会要用到，所以没有必要做按需加载，这里直接在页面最底部引入之-->
+	<script type="text/javascript" src="js/jquery-1.6.3.js"></script>
+	<script>
+	//你的业务逻辑脚本
+	</script>
+	<pre class="prettyprint linenums">
+yepnope({
+	load: alias.tabs,//引入tabs组件js文件
+	callback: function (url, result, key) {
+		$("ul.tabs").tabs("div.panes > div");
+	}
+});
+</pre>
+</body>
+</html>

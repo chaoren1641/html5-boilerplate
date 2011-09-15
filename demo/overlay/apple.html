@@ -5,6 +5,7 @@
 	<script src="../../js/core.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
 	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
 <style> 
 .apple_overlay {
 	display:none;
@@ -38,25 +39,25 @@
 
  <!--demo code start-->
  <h2>html</h2>
- <textarea class="html">
-<a href="#" class="btn" rel="#pop1">点击我试试</a>
-<div class="modal" id="pop1" style="display:none;">
-	<div class="modal-header">
-		<h3>Modal Heading</h3>
-		<a href="#" class="close">×</a>
-	</div>
-	<div class="modal-body">
-		<p>你确定吗？</p>
-	</div>
-	<div class="modal-footer" id="yesno">
-		<a href="#" class="btn primary">确定</a>
-		<a href="#" class="btn secondary">否</a>
-	</div>
- </div>
-</textarea>
+<pre class="prettyprint linenums">
+&lt;a href=&quot;#&quot; class=&quot;btn&quot; rel=&quot;#pop1&quot;&gt;点击我试试&lt;/a&gt;
+&lt;div class=&quot;modal&quot; id=&quot;pop1&quot; style=&quot;display:none;&quot;&gt;
+	&lt;div class=&quot;modal-header&quot;&gt;
+		&lt;h3&gt;Modal Heading&lt;/h3&gt;
+		&lt;a href=&quot;#&quot; class=&quot;close&quot;&gt;&#215;&lt;/a&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;modal-body&quot;&gt;
+		&lt;p&gt;你确定吗？&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;modal-footer&quot; id=&quot;yesno&quot;&gt;
+		&lt;a href=&quot;#&quot; class=&quot;btn primary&quot;&gt;确定&lt;/a&gt;
+		&lt;a href=&quot;#&quot; class=&quot;btn secondary&quot;&gt;否&lt;/a&gt;
+	&lt;/div&gt;
+ &lt;/div&gt;
+</pre>
 
 <h2>js</h2>
-<textarea class="js">
+<pre class="prettyprint linenums">
 $(function() {
 	yepnope({
   		load: [alias.expose, alias.overlay, alias.overlay_apple],
@@ -72,10 +73,11 @@ $(function() {
   		}
 	});
 });
-</textarea>
+</pre>
 <!--demo code end-->
 </div>
 <script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
 <script>
 $(function() {
 	yepnope({

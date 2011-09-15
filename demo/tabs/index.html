@@ -4,6 +4,7 @@
 	<title>标准tab demo</title> 
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" /> 
 	<link rel="stylesheet" type="text/css" href="../css/docs.css" />
+	<link rel="stylesheet" type="text/css" href="../assets/google-code-prettify/prettify.css" />
 	<script src="../../js/core.js"></script>
 </head> 
  
@@ -27,43 +28,39 @@
 
  <!--demo code start-->
  <h2>html</h2>
- <textarea class="html">
- <ul class="tabs"> 
-	<li><a href="#">Tab 1</a></li> 
-	<li><a href="#">Tab 2</a></li> 
-	<li><a href="#">Tab 3</a></li> 
-</ul> 
+ <pre class="prettyprint linenums">
+ &lt;ul class="tabs"&gt; 
+	&lt;li&gt;&lt;a href="#"&gt;Tab 1&lt;/a&gt;&lt;/li&gt; 
+	&lt;li&gt;&lt;a href="#"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;  
+	&lt;li&gt;&lt;a href="#"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;  
+&lt;/ul&gt;
  
-<div class="panes"> 
-	<div>第一个选项卡</div> 
-	<div>第二个选项卡</div> 
-	<div>第三个选项卡</div> 
-</div> 
-
-</textarea>
+&lt;div class="panes"&gt;
+	&lt;div&gt;第一个选项卡&lt;/div&gt;  
+	&lt;div&gt;第二个选项卡&lt;/div&gt;  
+	&lt;div&gt;第三个选项卡&lt;/div&gt; 
+&lt;/div&gt; 
+</pre>
 
 <h2>js</h2>
-<textarea class="js">
-$(function() {
-	yepnope({
-  		load: alias.tabs,
-  		callback: function (url, result, key) {
-			$("ul.tabs").tabs("div.panes > div");
-  		}
-	});
+<pre class="prettyprint linenums">
+yepnope({
+	load: alias.tabs,
+	callback: function (url, result, key) {
+		$("ul.tabs").tabs("div.panes > div");
+	}
 });
-</textarea>
+</pre>
 <!--demo code stop-->
 </div>
 <script type="text/javascript" src="../../js/jquery-1.6.3.js"></script>
+<script src="../assets/google-code-prettify/prettify.js"></script>
 <script type="text/javascript">
-$(function() {
-	yepnope({
-  		load: alias.tabs,
-  		callback: function (url, result, key) {
-			$("ul.tabs").tabs("div.panes > div");
-  		}
-	});
+yepnope({
+	load: alias.tabs,
+	callback: function (url, result, key) {
+		$("ul.tabs").tabs("div.panes > div");
+	}
 });
 </script> 
 </body> 
